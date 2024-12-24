@@ -38,8 +38,11 @@ jobs:
       id-token: write
     environment:
       name: github-pages
-      url: https://eventsourcer.github.io/guider-app
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
       - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+      - name: deploy
         run: npm run deploy
