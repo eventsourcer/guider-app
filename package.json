@@ -17,7 +17,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "build-gh": "next build && next export && touch ./out/.nojekyll && echo 'https://eventsourcer.github.io/guider-app' > ./out/CNAME",
+    "deploy": "gh-pages -d out -t true"
   },
   "devDependencies": {
     "@types/color": "^3.0.6",
