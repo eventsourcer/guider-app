@@ -24,7 +24,7 @@ jobs:
  
     - name: Build
       working-directory: ./
-      run: npm run build-gh
+      run: npm run build
  
     - name: Upload
       uses: actions/upload-pages-artifact@v3
@@ -44,6 +44,6 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-      - name: deploy
-        working-directory: ./
-        run: npm run deploy-gh
+      # - name: deploy
+      #   working-directory: ./
+      #   run: npm run deploy-gh
