@@ -24,26 +24,23 @@ jobs:
  
     - name: Build
       working-directory: ./
-      run: npm run deploy
+      run: npm run build
  
-    # - name: Upload
-    #   uses: actions/upload-pages-artifact@v3
-    #   with:
-    #     path: ./out
+    - name: Upload
+      uses: actions/upload-pages-artifact@v3
+      with:
+        path: ./out
  
-  # deploy:
-  #   needs: build
-  #   permissions:
-  #     pages: write
-  #     id-token: write
-  #   environment:
-  #     name: github-pages
-  #     url: ${{ steps.deployment.outputs.page_url }}
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Deploy to GitHub Pages
-  #       id: deployment
-  #       uses: actions/deploy-pages@v4
-      # - name: deploy
-      #   working-directory: ./
-      #   run: npm run deploy-gh
+  deploy:
+    needs: build
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
